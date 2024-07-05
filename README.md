@@ -30,6 +30,7 @@ brew install --cask wezterm
 brew install tmux
 brew install zsh
 brew install zsh-autosuggestions
+brew install zsh-syntax-highlighting
 brew install pure
 brew install neovim
 brew install fd
