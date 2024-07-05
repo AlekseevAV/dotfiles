@@ -23,6 +23,7 @@ return {
 
     telescope.setup({
       defaults = {
+        path_display = { "smart" },
         vimgrep_arguments = {
           "rg",
           "--follow", -- Follow symbolic links

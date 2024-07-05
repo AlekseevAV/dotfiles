@@ -71,7 +71,7 @@ alias oo='cd $HOME/library/Mobile\ Documents/iCloud~md~obsidian/Documents/vault_
 alias or='nvim $HOME/library/Mobile\ Documents/iCloud~md~obsidian/Documents/vault_1/inbox'
 
 # Quick config editing
-alias cf='nvim $(find $HOME/.config/nvim $HOME/.scripts $HOME/.tmux.conf $HOME/.zshrc $HOME/.wezterm.lua | fzf --preview "cat {}")'
+alias cf='nvim $(fd --hidden -E .git . ~/work/other/dotfiles | fzf --preview "cat {}")'
 
 
 # SCRIPTS

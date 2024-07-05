@@ -4,7 +4,7 @@ local keymap = vim.keymap -- for conciseness
 keymap.set(
   "n",
   "<leader>cf",
-  ":Telescope find_files cwd=/Users/aleksandr.alekseev/ search_dirs={'.config/nvim','.scripts','.tmux.conf','.zshrc','.wezterm.lua'}<cr>",
+  ":Telescope find_files hidden=true cwd=~/work/other/dotfiles<cr>",
   { desc = "Search config files" }
 )
 
@@ -13,7 +13,7 @@ keymap.set(
 keymap.set(
   "n",
   "<leader>oo",
-  ":cd /Users/aleksandr.alekseev/library/Mobile\\ Documents/iCloud~md~obsidian/Documents/vault_1<cr>",
+  ":cd ~/library/Mobile\\ Documents/iCloud~md~obsidian/Documents/vault_1<cr>",
   { desc = "Go to Obsidian vault" }
 )
 -- convert note to template and remove leading white space
@@ -30,12 +30,12 @@ keymap.set("n", "<leader>op", ":s/\\(# \\)[^_]*_/\\1/ | s/-/ /g<cr>", { desc = "
 keymap.set(
   "n",
   "<leader>of",
-  ':Telescope find_files search_dirs={"/Users/aleksandr.alekseev/library/Mobile\\ Documents/iCloud~md~obsidian/Documents/vault_1/notes"}<cr>',
+  ':Telescope find_files search_dirs={"~/library/Mobile\\ Documents/iCloud~md~obsidian/Documents/vault_1/notes"}<cr>',
   { desc = "Search for files in vault" }
 )
 keymap.set(
   "n",
   "<leader>os",
-  ':Telescope live_grep search_dirs={"/Users/aleksandr.alekseev/library/Mobile\\ Documents/iCloud~md~obsidian/Documents/vault_1/notes"}<cr>',
+  ':Telescope live_grep search_dirs={"~/library/Mobile\\ Documents/iCloud~md~obsidian/Documents/vault_1/notes"}<cr>',
   { desc = "Search for string in vault" }
 )
