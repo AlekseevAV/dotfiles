@@ -1,9 +1,11 @@
 # GENERAL
 export EDITOR='nvim'
 
+# enable vi mode
+bindkey -v
+
 # PLUGINS
 source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source $(brew --prefix)/opt/zsh-vi-mode/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
 source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # THEMES
@@ -12,10 +14,12 @@ autoload -U promptinit; promptinit
 prompt pure
 
 # FUNCTIONS
+# open k9s with the given context
 function k9ss() {
     k9s --context "$1-rke-$2-env" -c dp
 }
 
+# add a directory to the front of the PATH if it's not already there
 addToPathFront() {
     if [[ "$PATH" != *"$1"* ]]; then
         export PATH=$1:$PATH
