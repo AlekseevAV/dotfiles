@@ -42,11 +42,6 @@ brew install stow
 brew install lazygit
 ```
 
-### Other tools
-
-1. Install [ow-my-zsh](https://ohmyz.sh/#install)
-
-
 ### Stow dotfiles
 
 ```bash

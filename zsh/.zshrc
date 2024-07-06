@@ -1,24 +1,15 @@
-# OH-MY-ZSH & PLUGINS
-export ZSH="~/.oh-my-zsh"
-source $ZSH/oh-my-zsh.sh
+# GENERAL
+export EDITOR='nvim'
 
-plugins=(
-  git
-  vi-mode
-)
+# PLUGINS
 source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source $(brew --prefix)/opt/zsh-vi-mode/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
 source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-# bindkey '^F' autosuggest-accept
 
 # THEMES
-ZSH_THEME="robbyrussell"
-
-# Pure theme
 fpath+=("$(brew --prefix)/share/zsh/site-functions")
 autoload -U promptinit; promptinit
 prompt pure
-
 
 # FUNCTIONS
 function k9ss() {
@@ -31,18 +22,12 @@ addToPathFront() {
     fi
 }
 
-
-# GENERAL
-export EDITOR='nvim'
-
+# TOOLS
+# homebrew
 addToPathFront "/opt/homebrew/opt/binutils/bin"
 
-
-# TOOLS
-
 # fzf
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-eval "$(fzf --zsh)"
+source <(fzf --zsh)
 
 # krew
 addToPathFront "${KREW_ROOT:-$HOME/.krew}/bin"
@@ -64,7 +49,6 @@ command -v pyenv >/dev/null || addToPathFront "$PYENV_ROOT/bin"
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
 
-
 # ALIASES
 # Obsidian
 alias oo='cd $HOME/library/Mobile\ Documents/iCloud~md~obsidian/Documents/vault_1'
@@ -73,8 +57,9 @@ alias or='nvim $HOME/library/Mobile\ Documents/iCloud~md~obsidian/Documents/vaul
 # Quick config editing
 alias cf='nvim $(fd --hidden -E .git . ~/work/other/dotfiles | fzf --preview "cat {}")'
 
-
 # SCRIPTS
 addToPathFront $HOME/.scripts
-bindkey -s ^f "tmux-sessionizer\n"
 
+# BINDINGS
+bindkey -s ^f "tmux-sessionizer\n"
+bindkey -s ^g "cf\n"
