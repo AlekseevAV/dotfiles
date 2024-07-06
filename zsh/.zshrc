@@ -1,5 +1,5 @@
 # OH-MY-ZSH & PLUGINS
-export ZSH="/Users/aleksandr.alekseev/.oh-my-zsh"
+export ZSH="~/.oh-my-zsh"
 source $ZSH/oh-my-zsh.sh
 
 plugins=(
