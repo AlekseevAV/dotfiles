@@ -38,3 +38,6 @@ opt.swapfile = false
 
 -- set conceal level for obsidian plugin
 opt.conceallevel = 2
+
+-- set python provider
+vim.g.python3_host_prog = "~/.pyenv/versions/3.11.4/envs/pynvim/bin/python"
