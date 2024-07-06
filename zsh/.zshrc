@@ -26,6 +26,15 @@ addToPathFront() {
     fi
 }
 
+# yank the current command to the clipboard
+function vi-yank-xclip {
+    zle vi-yank
+    echo "$CUTBUFFER" | pbcopy
+}
+zle -N vi-yank-xclip
+bindkey -M vicmd 'y' vi-yank-xclip
+
+
 # TOOLS
 # homebrew
 addToPathFront "/opt/homebrew/opt/binutils/bin"
