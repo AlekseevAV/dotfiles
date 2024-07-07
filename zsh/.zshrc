@@ -56,23 +56,14 @@ export LDFLAGS="-L/opt/homebrew/opt/openssl@1.1/lib"
 export CPPFLAGS="-I/opt/homebrew/opt/openssl@1.1/include"
 export PKG_CONFIG_PATH="/opt/homebrew/opt/openssl@1.1/lib/pkgconfig"
 
-# pyenv
-export PYENV_ROOT="$HOME/.pyenv"
-command -v pyenv >/dev/null || addToPathFront "$PYENV_ROOT/bin"
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
-
 # ALIASES
 # Obsidian
-alias oo='cd $HOME/library/Mobile\ Documents/iCloud~md~obsidian/Documents/vault_1'
-alias or='nvim $HOME/library/Mobile\ Documents/iCloud~md~obsidian/Documents/vault_1/inbox'
-
-# Quick config editing
-alias cf='nvim $(fd --hidden -E .git . ~/work/other/dotfiles | fzf --preview "cat {}")'
+alias oo="cd $HOME/Library/Mobile\ Documents/iCloud~md~obsidian/Documents/vault_1"
+alias or="nvim $HOME/Library/Mobile\ Documents/iCloud~md~obsidian/Documents/vault_1/inbox"
 
 # SCRIPTS
 addToPathFront $HOME/.scripts
 
 # BINDINGS
 bindkey -s ^f "tmux-sessionizer\n"
-bindkey -s ^g "cf\n"
+bindkey -s ^g "dotfiles-quick-edit\n"
