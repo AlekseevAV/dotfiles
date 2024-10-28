@@ -1,0 +1,12 @@
+#!/bin/zsh
+
+set -e
+# create new venv if .python-version not exists
+if [ ! -f .python-version ]; then
+    echo "No .python-version file found. Creating new virtualenv..."
+    python_version=$(pyenv versions --skip-aliases --skip-envs | grep -v 'system' | fzf --prompt="Select python version: " | awk '{print $1}')
+    project_name=$(basename $PWD)
+    pyenv virtualenv $python_version $project_name
+    pyenv local $project_name
+    echo "Virtualenv created: $project_name ($python_version)"
+fi

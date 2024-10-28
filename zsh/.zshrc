@@ -26,6 +26,14 @@ addToPathFront() {
     fi
 }
 
+# init pyenv
+function pyenv_init() {
+    eval "$(pyenv init -)"
+    # .scripts/venv_init is a script that creates a virtualenv if it doesn't exist
+    venv_init
+    pyenv activate $(cat .python-version)
+}
+
 # yank the current command to the clipboard
 function vi-yank-xclip {
     zle vi-yank
@@ -56,9 +64,16 @@ export LDFLAGS="-L/opt/homebrew/opt/openssl@1.1/lib"
 export CPPFLAGS="-I/opt/homebrew/opt/openssl@1.1/include"
 export PKG_CONFIG_PATH="/opt/homebrew/opt/openssl@1.1/lib/pkgconfig"
 
+# pyenv
+export PYENV_ROOT="$HOME/.pyenv"
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+# Not initializing pyenv because it's slow, instead use: script to activate it:
+# pyenv_init
+# eval "$(pyenv init -)"
+
 # ALIASES
-# Obsidian
 alias oo="cd $HOME/Library/Mobile\ Documents/iCloud~md~obsidian/Documents/vault_1"
+alias ow="cd $HOME/work"
 alias or="nvim $HOME/Library/Mobile\ Documents/iCloud~md~obsidian/Documents/vault_1/inbox"
 
 # SCRIPTS
