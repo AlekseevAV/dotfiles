@@ -5,11 +5,11 @@ export EDITOR='nvim'
 bindkey -v
 
 # PLUGINS
-source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+source $HOMEBREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source $HOMEBREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # THEMES
-fpath+=("$(brew --prefix)/share/zsh/site-functions")
+fpath+=("$HOMEBREW_PREFIX/share/zsh/site-functions")
 autoload -U promptinit; promptinit
 prompt pure
 
@@ -45,7 +45,7 @@ bindkey -M vicmd 'y' vi-yank-xclip
 
 # TOOLS
 # homebrew
-addToPathFront "/opt/homebrew/opt/binutils/bin"
+addToPathFront "$HOMEBREW_PREFIX/opt/binutils/bin"
 
 # fzf
 source <(fzf --zsh)
@@ -54,15 +54,15 @@ source <(fzf --zsh)
 addToPathFront "${KREW_ROOT:-$HOME/.krew}/bin"
 
 # change sed to gnu-sed
-addToPathFront "/opt/homebrew/opt/gnu-sed/libexec/gnubin"
+addToPathFront "$HOMEBREW_PREFIX/opt/gnu-sed/libexec/gnubin"
 
 # libpq (psql)
-addToPathFront "/opt/homebrew/opt/libpq/bin"
+addToPathFront "$HOMEBREW_PREFIX/opt/libpq/bin"
 
 # openssl
-export LDFLAGS="-L/opt/homebrew/opt/openssl@1.1/lib"
-export CPPFLAGS="-I/opt/homebrew/opt/openssl@1.1/include"
-export PKG_CONFIG_PATH="/opt/homebrew/opt/openssl@1.1/lib/pkgconfig"
+export LDFLAGS="-L$HOMEBREW_PREFIX/opt/openssl@1.1/lib"
+export CPPFLAGS="-I$HOMEBREW_PREFIX/opt/openssl@1.1/include"
+export PKG_CONFIG_PATH="$HOMEBREW_PREFIX/opt/openssl@1.1/lib/pkgconfig"
 
 # pyenv
 export PYENV_ROOT="$HOME/.pyenv"
@@ -70,6 +70,16 @@ export PYENV_ROOT="$HOME/.pyenv"
 # Not initializing pyenv because it's slow, instead use: script to activate it:
 # pyenv_init
 # eval "$(pyenv init -)"
+
+# yazi
+function y() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+	yazi "$@" --cwd-file="$tmp"
+	if cwd="$(command cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+		builtin cd -- "$cwd"
+	fi
+	rm -f -- "$tmp"
+}
 
 # ALIASES
 alias oo="cd $HOME/Library/Mobile\ Documents/iCloud~md~obsidian/Documents/vault_1"
