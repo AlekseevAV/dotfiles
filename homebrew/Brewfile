@@ -1,0 +1,41 @@
+tap "buo/cask-upgrade"
+brew "mas"
+
+cask "google-chrome"
+cask "wezterm"
+cask "raycast"
+
+# dev tools
+brew "derailed/k9s/k9s"
+brew "git"
+brew "glab"
+brew "lazygit"
+brew "neovim"
+
+# python
+brew "poetry"
+brew "pyenv"
+
+# tmux
+brew "tmux"
+brew "tpm"
+
+# cli tools
+brew "fd"
+brew "fzf"
+brew "ripgrep"
+brew "gnu-sed"
+brew "jq"
+
+# yazi
+brew "yazi"
+brew "ffmpegthumbnailer"
+brew "sevenzip"
+brew "poppler"
+brew "zoxide"
+brew "imagemagick"
+
+# zsh plugins
+brew "pure"
+brew "zsh-autosuggestions"
+brew "zsh-syntax-highlighting"
