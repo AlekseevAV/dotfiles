@@ -11,6 +11,7 @@ brew "git"
 brew "glab"
 brew "lazygit"
 brew "neovim"
+cask "docker"
 
 # python
 brew "poetry"
