@@ -1,6 +1,7 @@
 # GENERAL
 export EDITOR='nvim'
 HISTFILE=~/.zsh_history
+SAVEHIST=1000
 
 # enable vi mode
 bindkey -v
