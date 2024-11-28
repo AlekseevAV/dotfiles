@@ -16,10 +16,6 @@ autoload -U promptinit; promptinit
 prompt pure
 
 # FUNCTIONS
-# open k9s with the given context
-function k9ss() {
-    k9s --context "$1-rke-$2-env" -c dp
-}
 
 # add a directory to the front of the PATH if it's not already there
 addToPathFront() {

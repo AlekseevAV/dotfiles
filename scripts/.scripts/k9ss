@@ -1,0 +1,11 @@
+#!/bin/zsh
+
+# if $1 and $2 set, then run k9s with the context $1-rke-$2-env
+if [ -n "$1" ] && [ -n "$2" ]; then
+    k9s --context "$1-rke-$2-env" -c dp
+else
+    # show all contexts to choose via fzf
+    kube_context=$(kubectl config get-contexts -o name | fzf)
+    k9s --context "$kube_context" -c dp
+fi 
+
