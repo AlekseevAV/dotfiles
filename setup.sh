@@ -24,5 +24,6 @@ stow -t ~ tmux
 stow -t ~ wezterm
 stow -t ~ zsh
 stow -t ~ aerospace
+stow -t ~ sketchybar
 stow -t ~/Library/Application\ Support/k9s k9s
 
