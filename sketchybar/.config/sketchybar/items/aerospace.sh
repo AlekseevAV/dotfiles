@@ -9,6 +9,7 @@ for sid in $(aerospace list-workspaces --all); do
         background.corner_radius=5 \
         background.height=20 \
         background.drawing=off \
+        icon.drawing=off \
         label.font.size=14.0 \
         label="$sid" \
         click_script="aerospace workspace $sid" \
