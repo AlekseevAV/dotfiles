@@ -17,6 +17,9 @@ cask "docker"
 brew "poetry"
 brew "pyenv"
 
+# python
+brew "delve"
+
 # tmux
 brew "tmux"
 brew "tpm"
