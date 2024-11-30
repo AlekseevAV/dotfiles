@@ -4,6 +4,7 @@ brew "mas"
 cask "google-chrome"
 cask "wezterm"
 cask "raycast"
+cask "dozer"
 
 # dev tools
 brew "derailed/k9s/k9s"
@@ -43,12 +44,3 @@ brew "imagemagick"
 brew "pure"
 brew "zsh-autosuggestions"
 brew "zsh-syntax-highlighting"
-
-# sketchybar & SketchyVim & JankyBorders
-tap "FelixKratz/formulae"
-brew "sketchybar"
-cask "sf-symbols"
-cask "font-hack-nerd-font"
-brew "borders"
-brew "svim"
-
