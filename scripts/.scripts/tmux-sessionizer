@@ -3,7 +3,12 @@
 if [[ $# -eq 1 ]]; then
     selected=$1
 else
-    selected=$(find ~/work -mindepth 1 -maxdepth 3 -type d | fzf)
+    select_options=(
+        $(find ~/work/other -mindepth 1 -maxdepth 1 -type d)
+        $(find ~/work/gamedev -mindepth 1 -maxdepth 1 -type d)
+        $(find ~/work/exness -mindepth 1 -maxdepth 2 -type d)
+    )
+    selected=$(printf "%s\n" "${select_options[@]}" | fzf)
 fi
 
 
