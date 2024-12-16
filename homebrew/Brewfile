@@ -13,12 +13,13 @@ brew "glab"
 brew "lazygit"
 brew "neovim"
 cask "docker"
+brew "tlrc"
 
 # python
 brew "poetry"
 brew "pyenv"
 
-# python
+# go
 brew "delve"
 
 # tmux
