@@ -1,7 +1,10 @@
 #!/usr/bin/env bash
 
 # Find and pick dotfiles for quick edit
-selected=$(fd --type f --hidden --exclude .git . ~/work/other/dotfiles | fzf --preview "cat {}" --header "Select a file to edit")
+selected=$(
+    fd --type f --hidden --exclude .git . ~/work/other/dotfiles | 
+    fzf --preview "bat --color=always --style=numbers {}" --header "Select a file to edit"
+)
 
 if [ -z "$selected" ]; then
     exit 0
