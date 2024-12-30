@@ -79,6 +79,9 @@ function y() {
 	rm -f -- "$tmp"
 }
 
+# zoxide
+eval "$(zoxide init zsh)"
+
 # ALIASES
 alias oo="cd $HOME/Library/Mobile\ Documents/iCloud~md~obsidian/Documents/vault_1"
 alias ow="cd $HOME/work"
