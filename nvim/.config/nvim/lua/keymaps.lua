@@ -14,7 +14,3 @@ keymap.set("n", "<leader>tn", "<cmd>tabn<CR>", { desc = "Go to next tab" }) --  
 keymap.set("n", "<leader>tp", "<cmd>tabp<CR>", { desc = "Go to previous tab" }) --  go to previous tab
 keymap.set("n", "<leader>tf", "<cmd>tabnew %<CR>", { desc = "Open current buffer in new tab" }) --  move current buffer to new tab
 
--- Navigate between quickfix items
-keymap.set("n", "]q", "<cmd>cnext<CR>zz", { desc = "Next qfixlist" })
-keymap.set("n", "[q", "<cmd>cprev<CR>zz", { desc = "Previous qfixlist" })
-
