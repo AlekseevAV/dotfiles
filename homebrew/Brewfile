@@ -15,10 +15,13 @@ cask "docker"
 brew "tlrc"
 brew "bat"
 brew "zoxide"
+brew "hurl"
+brew "lazydocker"
 
 # python
 brew "poetry"
 brew "pyenv"
+brew "uv"
 
 # go
 brew "delve"
