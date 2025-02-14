@@ -9,11 +9,23 @@ return {
     require("mini.operators").setup()
     require("mini.pairs").setup()
     require("mini.bracketed").setup()
-    require("mini.hipatterns").setup()
+    local hipatterns = require("mini.hipatterns")
+    hipatterns.setup({
+      highlighters = {
+        -- Highlight standalone 'FIXME', 'HACK', 'TODO', 'NOTE'
+        fixme = { pattern = "%f[%w]()FIXME()%f[%W]", group = "MiniHipatternsFixme" },
+        hack = { pattern = "%f[%w]()HACK()%f[%W]", group = "MiniHipatternsHack" },
+        todo = { pattern = "%f[%w]()TODO()%f[%W]", group = "MiniHipatternsTodo" },
+        note = { pattern = "%f[%w]()NOTE()%f[%W]", group = "MiniHipatternsNote" },
+        legacy = { pattern = "%f[%w]()LEGACY()%f[%W]", group = "MiniHipatternsFixme" },
+
+        -- Highlight hex color strings (`#rrggbb`) using that color
+        hex_color = hipatterns.gen_highlighter.hex_color(),
+      },
+    })
     require("mini.icons").setup()
     -- require("mini.completion").setup()
-    require("mini.notify").setup()
-    require("mini.tabline").setup()
+    require("mini.align").setup()
     require("mini.trailspace").setup()
     require("mini.move").setup({
       mappings = {
