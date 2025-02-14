@@ -16,6 +16,28 @@ return {
     { "<leader>fs", "<cmd>Telescope live_grep<cr>", desc = "Find string in cwd" },
     { "<leader>fc", "<cmd>Telescope grep_string<cr>", desc = "Find string under cursor in cwd" },
     { "<leader>ft", "<cmd>TodoTelescope<cr>", desc = "Find todos" },
+    {
+      "<leader>fv",
+      function()
+        require("telescope.builtin").live_grep({
+          search_dirs = { ".venv/lib", "node_modules" },
+          file_ignore_patterns = {},
+          additional_args = function()
+            return { "--no-ignore", "--hidden" }
+          end,
+        })
+      end,
+      { desc = "Find string in virtualenv and node_modules" },
+    },
+    {
+      "<leader>fd",
+      function()
+        require("telescope.builtin").live_grep({
+          search_dirs = { vim.fn.expand("%:p:h") },
+        })
+      end,
+      { desc = "Find string in current file directory" },
+    },
   },
   config = function()
     local telescope = require("telescope")
@@ -23,43 +45,17 @@ return {
 
     telescope.setup({
       defaults = {
-        path_display = { "smart" },
-        vimgrep_arguments = {
-          "rg",
-          "--follow", -- Follow symbolic links
-          "--hidden", -- Search for hidden files
-          "--no-heading", -- Don't group matches by each file
-          "--with-filename", -- Print the file path with the matched lines
-          "--line-number", -- Show line numbers
-          "--column", -- Show column numbers
-          "--smart-case", -- Smart case search
-
-          -- Exclude some patterns from search
-          "--glob=!**/.git/*",
-          "--glob=!**/.idea/*",
-          "--glob=!**/.vscode/*",
-          "--glob=!**/build/*",
-          "--glob=!**/dist/*",
-        },
+        file_ignore_patterns = { "node_modules/", ".git/", ".idea/", ".venv/" },
+        additional_args = function(_)
+          return { "--hidden" }
+        end,
+        hidden = true,
         mappings = {
           i = {
             ["<C-k>"] = actions.move_selection_previous,
             ["<C-j>"] = actions.move_selection_next,
             ["<C-q>"] = actions.send_selected_to_qflist + actions.open_qflist,
           },
-        },
-      },
-      pickers = {
-        live_grep = {
-          file_ignore_patterns = { "node_modules", ".git", ".venv", ".idea", ".vscode", ".obsidian", "excalidraw" },
-          hidden = true,
-          additional_args = function(_)
-            return { "--hidden" }
-          end,
-        },
-        find_files = {
-          file_ignore_patterns = { "node_modules", ".git", ".venv", ".idea", ".vscode", ".obsidian", "excalidraw" },
-          hidden = true,
         },
       },
     })
