@@ -13,7 +13,7 @@ keymap.set(
 keymap.set(
   "n",
   "<leader>oo",
-  ":cd ~/library/Mobile\\ Documents/iCloud~md~obsidian/Documents/vault_1<cr>",
+  ":cd ~/Library/Mobile\\ Documents/iCloud~md~obsidian/Documents/vault_1<cr>",
   { desc = "Go to Obsidian vault" }
 )
 -- convert note to template and remove leading white space
@@ -30,12 +30,22 @@ keymap.set("n", "<leader>op", ":s/\\(# \\)[^_]*_/\\1/ | s/-/ /g<cr>", { desc = "
 keymap.set(
   "n",
   "<leader>of",
-  ':Telescope find_files search_dirs={"~/library/Mobile\\ Documents/iCloud~md~obsidian/Documents/vault_1/notes"}<cr>',
+  ':Telescope find_files search_dirs={"~/Library/Mobile\\ Documents/iCloud~md~obsidian/Documents/vault_1/notes"}<cr>',
   { desc = "Search for files in vault" }
 )
 keymap.set(
   "n",
   "<leader>os",
-  ':Telescope live_grep search_dirs={"~/library/Mobile\\ Documents/iCloud~md~obsidian/Documents/vault_1/notes"}<cr>',
+  ':Telescope live_grep search_dirs={"~/Library/Mobile\\ Documents/iCloud~md~obsidian/Documents/vault_1/notes"}<cr>',
   { desc = "Search for string in vault" }
+)
+
+
+-- OTHER
+-- format ChatGPT output to markdown
+keymap.set(
+  "n",
+  "<leader>gf",
+  ":%s/\\t//g | %s/^\\(\\d*\\)\\./\\1. /g | %s/•/- /g<cr>",
+  { desc = "Format ChatGPT output to markdown" }
 )
