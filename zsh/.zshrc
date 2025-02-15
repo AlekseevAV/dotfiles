@@ -67,7 +67,12 @@ export PYENV_ROOT="$HOME/.pyenv"
 [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
 # Not initializing pyenv because it's slow, instead use: script to activate it:
 # pyenv_init
-# eval "$(pyenv init -)"
+function venv_init() {
+    if [ ! -d .venv ]; then
+        uv venv
+    fi
+    source .venv/bin/activate
+}
 
 # yazi
 function y() {
