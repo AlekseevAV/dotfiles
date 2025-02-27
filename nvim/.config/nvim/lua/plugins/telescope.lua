@@ -19,15 +19,24 @@ return {
     {
       "<leader>fv",
       function()
+        local search_dirs = { "node_modules" }
+        local current_venv = vim.fn.getenv("VIRTUAL_ENV")
+        if current_venv == nil then
+          -- add default venv path
+          table.insert(search_dirs, ".venv/lib")
+        else
+          -- add current venv path
+          table.insert(search_dirs, current_venv .. "/lib")
+        end
         require("telescope.builtin").live_grep({
-          search_dirs = { ".venv/lib", "node_modules" },
+          search_dirs = search_dirs,
           file_ignore_patterns = {},
           additional_args = function()
             return { "--no-ignore", "--hidden" }
           end,
         })
       end,
-      { desc = "Find string in virtualenv and node_modules" },
+      desc = "Find string in virtualenv and node_modules",
     },
     {
       "<leader>fd",
@@ -36,7 +45,7 @@ return {
           search_dirs = { vim.fn.expand("%:p:h") },
         })
       end,
-      { desc = "Find string in current file directory" },
+      desc = "Find string in current file directory",
     },
   },
   config = function()
@@ -45,6 +54,16 @@ return {
 
     telescope.setup({
       defaults = {
+        vimgrep_arguments = {
+          "rg",
+          "--color=never",
+          "--no-heading",
+          "--with-filename",
+          "--line-number",
+          "--column",
+          "--smart-case",
+          "--hidden",
+        },
         file_ignore_patterns = { "node_modules/", ".git/", ".idea/", ".venv/" },
         additional_args = function(_)
           return { "--hidden" }
