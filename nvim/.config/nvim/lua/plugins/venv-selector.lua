@@ -1,16 +1,22 @@
 return {
-  "linux-cultist/venv-selector.nvim",
+  "stefanboca/venv-selector.nvim",
+  branch = "sb/push-rlpxsqmllxtz",
   dependencies = {
-    "neovim/nvim-lspconfig", 
+    "ibhagwan/fzf-lua",
+    "neovim/nvim-lspconfig",
     "mfussenegger/nvim-dap", "mfussenegger/nvim-dap-python", --optional
-    { "nvim-telescope/telescope.nvim", branch = "0.1.x", dependencies = { "nvim-lua/plenary.nvim" } },
   },
   lazy = false,
-  branch = "regexp", -- This is the regexp branch, use this for the new version
   keys = {
     { "<leader>vs", "<cmd>:VenvSelect<cr>", desc = "Select VirtualEnv" },
-   },
+  },
   config = function()
-    require("venv-selector").setup()
+    require("venv-selector").setup({
+      settings = {
+        options = {
+          picker = "fzf-lua",
+        },
+      },
+    })
   end,
 }
