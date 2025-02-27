@@ -30,6 +30,7 @@ return {
         "lua_ls",
         "pyright",
       },
+      automatic_installation = true,
     })
 
     mason_tool_installer.setup({
@@ -41,5 +42,6 @@ return {
         "flake8", -- python formatter
       },
     })
+
   end,
 }

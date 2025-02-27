@@ -22,6 +22,7 @@ brew "lazydocker"
 brew "poetry"
 brew "pyenv"
 brew "uv"
+brew "ruff"
 
 # go
 brew "delve"

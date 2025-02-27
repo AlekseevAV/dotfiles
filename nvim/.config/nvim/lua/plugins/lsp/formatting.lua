@@ -11,14 +11,8 @@ return {
         markdown = { "prettier" },
         lua = { "stylua" },
         javascript = { "prettier" },
-        -- python = function(bufnr)
-        --   if require("conform").get_formatter_info("ruff_format", bufnr).available then
-        --     return { "ruff_format" }
-        --   else
-        --     return { "isort", "black" }
-        --   end
-        -- end,
-        python = { "black", "isort" },
+        -- python = { "black", "isort" },
+        python = { "ruff_fix", "ruff_format", "ruff_organize_imports" },
       },
       -- format_on_save = {
       --   lsp_fallback = true,
