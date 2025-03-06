@@ -1,5 +1,6 @@
 k9s:
   liveViewAutoRefresh: false
+  screenDumpDir: /Users/aleksandr.alekseev/Library/Application Support/k9s/screen-dumps
   refreshRate: 2
   maxConnRetry: 5
   readOnly: false
@@ -11,6 +12,7 @@ k9s:
     crumbsless: false
     reactive: false
     noIcons: false
+    defaultsToFullScreen: false
     skin: transparent
   skipLatestRevCheck: false
   disablePodCounting: false
@@ -30,6 +32,7 @@ k9s:
     buffer: 5000
     sinceSeconds: -1
     textWrap: false
+    disableAutoscroll: false
     showTime: false
   thresholds:
     cpu:

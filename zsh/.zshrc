@@ -80,10 +80,11 @@ function y() {
 # zoxide
 eval "$(zoxide init zsh)"
 
+# config paths
+export XDG_CONFIG_HOME="$HOME/.config"
+
 # ALIASES
-alias oo="cd $HOME/Library/Mobile\ Documents/iCloud~md~obsidian/Documents/vault_1"
 alias ow="cd $HOME/work"
-alias or="nvim $HOME/Library/Mobile\ Documents/iCloud~md~obsidian/Documents/vault_1/inbox"
 
 # SCRIPTS
 addToPathFront $HOME/.scripts

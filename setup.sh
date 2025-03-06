@@ -24,6 +24,5 @@ stow -t ~ tmux
 stow -t ~ wezterm
 stow -t ~ zsh
 stow -t ~ yazi
-stow -t ~/Library/Application\ Support/k9s k9s
-stow -t ~/Library/Application\ Support/lazygit lazygit
+stow -t ~ k9s
 
