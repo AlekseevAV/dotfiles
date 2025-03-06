@@ -85,6 +85,7 @@ export XDG_CONFIG_HOME="$HOME/.config"
 
 # ALIASES
 alias ow="cd $HOME/work"
+alias n="$EDITOR"
 
 # SCRIPTS
 addToPathFront $HOME/.scripts
