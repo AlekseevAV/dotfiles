@@ -3,11 +3,15 @@
 if [[ $# -eq 1 ]]; then
     selected=$1
 else
-    select_options=(
-        $(find ~/work/other -mindepth 1 -maxdepth 1 -type d)
-        $(find ~/work/gamedev -mindepth 1 -maxdepth 1 -type d)
-        $(find ~/work/exness -mindepth 1 -maxdepth 2 -type d)
-        $(find ~/work/arduino -mindepth 1 -maxdepth 1 -type d)
+    select_options=()
+    while IFS= read -rd '' dir; do
+        select_options+=("$dir")
+    done < <(
+        find ~/work/other -mindepth 1 -maxdepth 1 -type d -print0
+        find ~/work/gamedev -mindepth 1 -maxdepth 1 -type d -print0
+        find ~/work/exness -mindepth 1 -maxdepth 2 -type d -print0
+        find ~/work/arduino -mindepth 1 -maxdepth 1 -type d -print0
+        find ~/Library/Mobile\ Documents/iCloud~md~obsidian/Documents -mindepth 1 -maxdepth 1 -type d -print0
     )
     selected=$(printf "%s\n" "${select_options[@]}" | fzf)
 fi
@@ -25,12 +29,12 @@ fi
 tmux_running=$(pgrep tmux)
 
 if [[ -z $TMUX ]] && [[ -z $tmux_running ]]; then
-    tmux new-session -s $selected_name -c $selected
+    tmux new-session -s $selected_name -c "$selected"
     exit 0
 fi
 
 if ! tmux has-session -t=$selected_name 2> /dev/null; then
-    tmux new-session -ds $selected_name -c $selected
+    tmux new-session -ds $selected_name -c "$selected"
 fi
 
 tmux switch-client -t $selected_name
