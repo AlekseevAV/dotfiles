@@ -24,5 +24,6 @@ stow -t ~ tmux
 stow -t ~ wezterm
 stow -t ~ zsh
 stow -t ~ yazi
+stow -t ~ lazygit
 stow -t ~ k9s
 

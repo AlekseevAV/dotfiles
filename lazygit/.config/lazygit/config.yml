@@ -1,0 +1,10 @@
+git:
+  log:
+    showGraph: always
+    showWholeGraph: true
+
+keybinding:
+  commits:
+    moveUpCommit: <c-q>
+    moveDownCommit: <c-a>
+    openLogMenu: <c-g>
