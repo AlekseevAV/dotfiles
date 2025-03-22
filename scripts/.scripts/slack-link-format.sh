@@ -66,6 +66,7 @@ issue_summary="$issue_key: $issue_summary"
 issue_summary_length=${#issue_summary}
 
 # Simulate keypresses
+# Forat for Slack: ISSUE_KEY: ISSUE_SUMMARY ISSUE_URL
 osa_script='
 tell application "System Events"
     tell application "Slack" to activate
@@ -89,7 +90,34 @@ tell application "System Events"
 end tell
 '
 
-osascript -e "$osa_script"
+# Forat for Slack: [ISSUE_KEY: ISSUE_SUMMARY](ISSUE_URL)
+osa_script_v2='
+tell application "System Events"
+    tell application "Slack" to activate
+    delay 0.4
+    # Simulate keypresses to paste the text
+    keystroke "['$issue_summary']" # Paste the text
+    delay 0.4
+    # Select the text by selecting the text length
+    # repeat '$issue_summary_length' times
+    #     key code 123 using {shift down} # Left arrow
+    # end repeat
+    # delay 0.4
+    # Copy url to clipboard
+    set the clipboard to "'$issue_url'"
+    delay 0.4
+    # Insert a link to the Jira issue surrounded by angle brackets
+    keystroke "("
+    # CMD + V to paste the URL
+    keystroke "v" using command down
+    delay 0.4
+    keystroke ")"
+    # move the cursor to the end of the line
+    # key code 124 # Right arrow
+end tell
+'
+
+osascript -e "$osa_script_v2"
 
 
 # Switch back to the original layout
