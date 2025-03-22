@@ -1,0 +1,11 @@
+# appearance
+theme = catppuccin-mocha
+font-family = "MesloLGS Nerd Font Mono"
+font-size = 18
+background-opacity = 0.9
+background-blur-radius = 20
+window-decoration = none
+
+# functions
+mouse-hide-while-typing = true
+keybind = global:cmd+s=toggle_quick_terminal

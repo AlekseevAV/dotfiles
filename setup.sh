@@ -27,4 +27,5 @@ stow -t ~ yazi
 stow -t ~ lazygit
 stow -t ~ k9s
 stow -t ~ terminal_login
+stow -t ~ ghostty
 

@@ -3,6 +3,7 @@ brew "mas"
 
 cask "google-chrome"
 cask "wezterm"
+cask "ghostty"
 cask "raycast"
 cask "dozer"
 
