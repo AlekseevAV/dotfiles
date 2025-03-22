@@ -11,8 +11,8 @@ return {
         markdown = { "prettier" },
         lua = { "stylua" },
         javascript = { "prettier" },
-        -- python = { "black", "isort" },
         python = { "ruff_fix", "ruff_format", "ruff_organize_imports" },
+        go = { "gofmt" },
       },
       -- format_on_save = {
       --   lsp_fallback = true,
