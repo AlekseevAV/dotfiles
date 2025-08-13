@@ -1,5 +1,8 @@
 local keymap = vim.keymap -- for conciseness
 
+keymap.set("n", "Y", '"*yy', { noremap = true, silent = true, desc = "Yank whole line to clipboard" })
+keymap.set("v", "Y", '"*y', { noremap = true, silent = true, desc = "Yank selected text to clipboard" })
+
 -- search for files in config
 keymap.set(
   "n",

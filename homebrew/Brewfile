@@ -7,10 +7,14 @@ cask "ghostty"
 cask "raycast"
 cask "dozer"
 
+# databases
+cask "another-redis-desktop-manager"
+
 brew "derailed/k9s/k9s"
 brew "git"
 brew "glab"
 brew "lazygit"
+brew "git-delta"
 brew "neovim"
 cask "docker"
 brew "tlrc"
@@ -22,6 +26,7 @@ brew "lazydocker"
 # python
 brew "poetry"
 brew "pyenv"
+brew "pyenv-virtualenv"
 brew "uv"
 brew "ruff"
 

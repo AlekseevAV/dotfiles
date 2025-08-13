@@ -15,7 +15,7 @@ return {
     { "<leader>fr", "<cmd>Telescope oldfiles<cr>", desc = "Fuzzy find recent files" },
     { "<leader>fs", "<cmd>Telescope live_grep<cr>", desc = "Find string in cwd" },
     { "<leader>fc", "<cmd>Telescope grep_string<cr>", desc = "Find string under cursor in cwd" },
-    { "<leader>ft", "<cmd>TodoTelescope<cr>", desc = "Find todos" },
+    { "<leader>ft", "<cmd>Telescope lsp_document_symbols<cr>", desc = "Find lsp defenitions" },
     {
       "<leader>fv",
       function()

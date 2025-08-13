@@ -42,6 +42,12 @@ return {
 
       -- Text object
       map({ "o", "x" }, "ih", ":<C-U>Gitsigns select_hunk<CR>", "Gitsigns select hunk")
+      -- Highlight changed words.
+      vim.keymap.set("n", "<leader>hw", require("gitsigns").toggle_word_diff, { desc = "Toggle word diff" })
+      -- Highlight added lines.
+      vim.keymap.set("n", "<leader>hL", require("gitsigns").toggle_linehl, { desc = "Toggle line highlight" })
+      -- Highlight removed lines.
+      vim.keymap.set("n", "<leader>hv", require("gitsigns").toggle_deleted, { desc = "Toggle deleted (all)" })
     end,
   },
 }
