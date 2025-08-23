@@ -3,12 +3,10 @@ export EDITOR='nvim'
 HISTFILE=~/.zsh_history
 SAVEHIST=1000
 
-# enable vi mode
-bindkey -v
-
 # PLUGINS
 source $HOMEBREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source $HOMEBREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+source $HOMEBREW_PREFIX/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
 
 # THEMES
 fpath+=("$HOMEBREW_PREFIX/share/zsh/site-functions")
