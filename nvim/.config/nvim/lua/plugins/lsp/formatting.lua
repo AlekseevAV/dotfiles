@@ -9,10 +9,23 @@ return {
         yaml = { "prettier" },
         toml = { "prettier" },
         markdown = { "prettier" },
+        html = { "prettier" },
         lua = { "stylua" },
-        javascript = { "prettier" },
-        python = { "ruff_fix", "ruff_format", "ruff_organize_imports" },
+        javascript = { "prettier_js" },
+        javascriptreact = { "prettier_js" },
+        typescript = { "prettier_js" },
+        typescriptreact = { "prettier_js" },
+        python = { "ruff_format", "ruff_organize_imports" },
         go = { "gofmt" },
+      },
+      formatters = {
+        prettier = {},
+        prettier_js = {
+          command = "prettier",
+          stdin = true,
+          args = { "--stdin-filepath", "$FILENAME" },
+          prepend_args = { "--tab-width", "2", "--use-tabs", "false", "--print-width", "120" },
+        },
       },
       -- format_on_save = {
       --   lsp_fallback = true,
@@ -27,6 +40,6 @@ return {
         -- async = false,
         timeout_ms = 3000,
       })
-    end, { desc = "Fromat file or range (in visual mode)" })
+    end, { desc = "Format file or range (in visual mode)" })
   end,
 }
