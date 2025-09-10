@@ -5,7 +5,6 @@ cask "google-chrome"
 cask "wezterm"
 cask "ghostty"
 cask "raycast"
-cask "dozer"
 
 # databases
 cask "another-redis-desktop-manager"
@@ -43,6 +42,7 @@ brew "fzf"
 brew "ripgrep"
 brew "gnu-sed"
 brew "jq"
+brew "atuin"
 
 # yazi
 brew "yazi"
