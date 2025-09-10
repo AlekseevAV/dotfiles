@@ -7,5 +7,5 @@ else
     # show all contexts to choose via fzf
     kube_context=$(kubectl config get-contexts -o name | fzf)
     k9s --context "$kube_context" -c dp
-fi 
+fi
 

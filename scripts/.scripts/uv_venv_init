@@ -1,0 +1,39 @@
+#!/bin/zsh
+
+set -e
+
+# Directory for storing virtual environments (similar to pyenv)
+UV_VIRTUALENVS_DIR="${UV_VIRTUALENVS_DIR:-$HOME/.local/share/virtualenvs}"
+
+# create new venv if .python-version not exists
+if [ ! -f .python-version ]; then
+    echo "No .python-version file found. Creating new virtualenv with uv..."
+
+    # Get available Python versions from uv, extract version numbers and format for fzf
+    python_version=$(uv python list --managed-python | awk '/^cpython-[0-9]/ {split($1, a, "-"); gsub(/\+.*/, "", a[2]); print a[2]}' | sort -V | uniq | fzf --prompt="Select python version: ")
+
+    # Check if the selected version is installed
+    if ! uv python list --only-installed --managed-python | grep -q "cpython-$python_version"; then
+        echo "Python $python_version not installed. Installing..."
+        uv python install $python_version
+    fi
+
+    project_name=$(basename $PWD)
+
+    # Ensure virtualenvs directory exists
+    mkdir -p "$UV_VIRTUALENVS_DIR"
+
+    # Virtual environment dir
+    venv_dir="$UV_VIRTUALENVS_DIR/$project_name-$python_version"
+
+    # Create virtual environment with uv using selected python version
+    uv venv --python=$python_version "$venv_dir"
+
+    # Pin Python version using uv python pin
+    uv python pin "$venv_dir"
+
+    echo "Virtualenv created: $project_name ($python_version) using uv"
+    echo "Python version pinned in .python-version file"
+    echo "Location: $venv_dir"
+    echo "Activate with: source $venv_dir/bin/activate"
+fi

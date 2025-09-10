@@ -28,6 +28,17 @@ function pyenv_init() {
     # .scripts/venv_init is a script that creates a virtualenv if it doesn't exist
     venv_init
     pyenv activate $(cat .python-version)
+    # set uv environment variable for uv to use the correct python version
+    export UV_PROJECT_ENVIRONMENT="$(python -c 'import sys; print(sys.prefix)')"
+}
+
+# init uv virtual environment
+function uv_init() {
+    # .scripts/uv_venv_init is a script that creates a virtualenv if it doesn't exist
+    uv_venv_init
+    source $(cat .python-version)/bin/activate
+    # set uv environment variable for uv to use the correct python version
+    export UV_PROJECT_ENVIRONMENT="$(python -c 'import sys; print(sys.prefix)')"
 }
 
 # yank the current command to the clipboard
@@ -78,6 +89,9 @@ function y() {
 # zoxide
 eval "$(zoxide init zsh)"
 
+# atuin
+eval "$(atuin init zsh)"
+
 # config paths
 export XDG_CONFIG_HOME="$HOME/.config"
 
@@ -91,3 +105,5 @@ addToPathFront $HOME/.scripts
 # BINDINGS
 bindkey -s ^f "tmux-sessionizer\n"
 bindkey -s ^g "dotfiles-quick-edit\n"
+
+. "$HOME/.atuin/bin/env"
