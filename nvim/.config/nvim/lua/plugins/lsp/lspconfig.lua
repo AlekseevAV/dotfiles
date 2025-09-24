@@ -20,21 +20,24 @@ return {
     vim.api.nvim_create_autocmd("LspAttach", {
       group = vim.api.nvim_create_augroup("UserLspKeymaps", {}),
       callback = function(ev)
-        local o = { buffer = ev.buf, silent = true }
+        local function opts(desc)
+          return { buffer = ev.buf, silent = true, desc = desc }
+        end
+
         local map = vim.keymap.set
-        map("n", "gR", "<cmd>Telescope lsp_references<CR>", o)
-        map("n", "gD", vim.lsp.buf.declaration, o)
-        map("n", "gd", "<cmd>Telescope lsp_definitions<CR>", o)
-        map("n", "gi", "<cmd>Telescope lsp_implementations<CR>", o)
-        map("n", "gt", "<cmd>Telescope lsp_type_definitions<CR>", o)
-        map({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, o)
-        map("n", "<leader>rn", vim.lsp.buf.rename, o)
-        map("n", "<leader>df", "<cmd>Telescope diagnostics bufnr=0<CR>", o)
-        map("n", "<leader>dd", vim.diagnostic.open_float, o)
-        map("n", "[d", vim.diagnostic.goto_prev, o)
-        map("n", "]d", vim.diagnostic.goto_next, o)
-        map("n", "K", vim.lsp.buf.hover, o)
-        map("n", "<leader>rs", "<cmd>LspRestart<CR>", o)
+        map("n", "gR", "<cmd>Telescope lsp_references<CR>", opts("Find references"))
+        map("n", "gD", vim.lsp.buf.declaration, opts("Go to declaration"))
+        map("n", "gd", "<cmd>Telescope lsp_definitions<CR>", opts("Go to definition"))
+        map("n", "gi", "<cmd>Telescope lsp_implementations<CR>", opts("Go to implementation"))
+        map("n", "gt", "<cmd>Telescope lsp_type_definitions<CR>", opts("Go to type definition"))
+        map({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, opts("Code action"))
+        map("n", "<leader>rn", vim.lsp.buf.rename, opts("Rename"))
+        map("n", "<leader>df", "<cmd>Telescope diagnostics bufnr=0<CR>", opts("Buffer diagnostics"))
+        map("n", "<leader>dd", vim.diagnostic.open_float, opts("Line diagnostics"))
+        map("n", "[d", vim.diagnostic.goto_prev, opts("Previous diagnostic"))
+        map("n", "]d", vim.diagnostic.goto_next, opts("Next diagnostic"))
+        map("n", "K", vim.lsp.buf.hover, opts("Hover documentation"))
+        map("n", "<leader>rs", "<cmd>LspRestart<CR>", opts("Restart LSP"))
       end,
     })
 

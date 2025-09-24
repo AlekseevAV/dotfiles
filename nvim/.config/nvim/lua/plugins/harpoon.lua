@@ -4,9 +4,7 @@ return {
   dependencies = { "nvim-lua/plenary.nvim" },
   init = function()
     local harpoon = require("harpoon")
-    -- REQUIRED
     harpoon:setup()
-    -- REQUIRED
 
     vim.keymap.set("n", "<leader>a", function()
       harpoon:list():add()
@@ -44,18 +42,6 @@ return {
         table.insert(file_paths, item.value)
       end
 
-      local make_finder = function()
-        local paths = {}
-
-        for _, item in ipairs(harpoon_files.items) do
-          table.insert(paths, item.value)
-        end
-
-        return require("telescope.finders").new_table({
-          results = paths,
-        })
-      end
-
       require("telescope.pickers")
         .new({}, {
           prompt_title = "Harpoon",
@@ -64,18 +50,6 @@ return {
           }),
           previewer = conf.file_previewer({}),
           sorter = conf.generic_sorter({}),
-          attach_mappings = function(prompt_buffer_number, map)
-            map("i", "<c-d>", function()
-              local state = require("telescope.actions.state")
-              local selected_entry = state.get_selected_entry()
-              local current_picker = state.get_current_picker(prompt_buffer_number)
-
-              harpoon:list():remove_at(selected_entry.index)
-              current_picker:refresh(make_finder())
-            end)
-
-            return true
-          end,
         })
         :find()
     end

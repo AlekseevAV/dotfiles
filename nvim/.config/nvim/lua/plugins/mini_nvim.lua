@@ -5,7 +5,18 @@ return {
     require("mini.ai").setup()
     require("mini.comment").setup()
     require("mini.cursorword").setup()
-    require("mini.surround").setup()
+    require("mini.surround").setup({
+      custom_surroundings = {
+        ["("] = { output = { left = "(", right = ")" } },
+        [")"] = { output = { left = "(", right = ")" } },
+        ["["] = { output = { left = "[", right = "]" } },
+        ["]"] = { output = { left = "[", right = "]" } },
+        ["{"] = { output = { left = "{", right = "}" } },
+        ["}"] = { output = { left = "{", right = "}" } },
+        ["<"] = { output = { left = "<", right = ">" } },
+        [">"] = { output = { left = "<", right = ">" } },
+      },
+    })
     require("mini.operators").setup()
     require("mini.pairs").setup()
     require("mini.bracketed").setup()
