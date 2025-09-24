@@ -1,9 +1,7 @@
 # appearance
-theme = catppuccin-mocha
-font-family = "MesloLGS Nerd Font Mono"
+theme = "catppuccin-mocha.conf"
+font-family = "JetBrains Mono"
 font-size = 18
-background-opacity = 0.9
-background-blur-radius = 20
 window-decoration = none
 
 # functions

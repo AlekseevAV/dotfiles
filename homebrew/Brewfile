@@ -5,6 +5,10 @@ cask "google-chrome"
 cask "wezterm"
 cask "ghostty"
 cask "raycast"
+cask "kindavim"
+
+# fonts
+cask "font-jetbrains-mono"
 
 # databases
 cask "another-redis-desktop-manager"
